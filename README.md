@@ -1,4 +1,4 @@
-# Remote Base64
+# Remote Base64 [![Build Status](https://travis-ci.org/yakovenkodenis/node-remote-base64.svg?branch=master)](https://travis-ci.org/yakovenkodenis/node-remote-base64)
 ======
 
 ## Installation
