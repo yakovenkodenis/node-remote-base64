@@ -7,19 +7,22 @@
 
 ## Usage
 
+#### ES5
 ```javascript
-  var remoteBase64 = require('node-remote-base64');
+  const remoteBase64 = require('node-remote-base64');
   
-  const url = 'http://placehold.it/100x100';
-  remoteBase65(url)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+  const getBase64 = () =>
+    remoteBase65('http://placehold.it/100x100')
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
 ```
 
-#### Babel (Async/Await)
+#### Babel ES7 (Async/Await)
 ```javascript
   import remoteBase64 from 'node-remote-base64';
-  
-  const url = 'http://placehold.it/100x100';
-  const data = await remoteBase65(url);
+
+  const getBase64 = async () {
+    const b64data = await remoteBase65('http://placehold.it/100x100');
+    console.log(b64data);
+  }
 ```
