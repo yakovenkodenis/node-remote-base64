@@ -1,0 +1,32 @@
+{
+  "name": "node-remote-base64",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=4.1.1"
+  },
+  "description": "Fetch remote data to base64 format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yakovenkodenis/node-remote-base64.git"
+  },
+  "keywords": [
+    "base64",
+    "node",
+    "remote",
+    "fetch"
+  ],
+  "author": "Denis Yakovenko <yakovenko.denis.a@gmail.com> (https://github.com/yakovenkodenis)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yakovenkodenis/node-remote-base64/issues"
+  },
+  "homepage": "https://github.com/yakovenkodenis/node-remote-base64#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
