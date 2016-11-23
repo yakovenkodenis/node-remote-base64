@@ -26,14 +26,6 @@ function remoteBase64(inputUrl) {
     return new Promise(function(resolve, reject) {
         var adapter = adapterFor(inputUrl);
         var options = url.parse(inputUrl);
-        
-        // if (options.protocol === 'http:') {
-        //     options.port = options.port || 80;
-        //     options.agent = adapter.Agent(options);
-        // } else if (options.protocol === 'https:') {
-        //     options.port = options.port || 443;
-        //     options.agent = new (adapter.Agent)(options);
-        // }
 
         adapter.get(options, function(res) {
             var data = '';
@@ -43,7 +35,7 @@ function remoteBase64(inputUrl) {
             });
 
             res.on('end', function() {
-                resolve(data);
+                resolve(new Buffer(data).toString('base64'));
             });
         }).on('error', function(error) {
             reject(error);
