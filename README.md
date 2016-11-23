@@ -13,7 +13,7 @@
   
   const getBase64 = () =>
     remoteBase65('http://placehold.it/100x100')
-      .then(data => console.log(data))
+      .then(b64data => console.log(b64data))
       .catch(err => console.log(err));
 ```
 
