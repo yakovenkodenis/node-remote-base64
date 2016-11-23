@@ -1,6 +1,6 @@
 {
   "name": "node-remote-base64",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "node": ">=4.1.1"
   },
