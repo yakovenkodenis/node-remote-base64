@@ -21,7 +21,7 @@
 ```javascript
   import remoteBase64 from 'node-remote-base64';
 
-  const getBase64 = async () {
+  const getBase64 = async () => {
     const b64data = await remoteBase65('http://placehold.it/100x100');
     console.log(b64data);
   }
