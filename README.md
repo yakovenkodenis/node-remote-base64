@@ -10,7 +10,7 @@
 ```javascript
   var remoteBase64 = require('node-remote-base64');
   
-  const url = http://"placehold.it/100x100;
+  const url = 'http://placehold.it/100x100';
   remoteBase65(url)
     .then(data => console.log(data))
     .catch(err => console.log(err));
@@ -20,6 +20,6 @@
 ```javascript
   import remoteBase64 from 'node-remote-base64';
   
-  const url = http://placehold.it/100x100;
+  const url = 'http://placehold.it/100x100';
   const data = await remoteBase65(url);
 ```
