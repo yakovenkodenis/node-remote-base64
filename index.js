@@ -1,6 +1,7 @@
 'use strict';
 
 var url = require('url');
+var mime = require('mime-types');
 
 
 var adapterFor = (function() {
@@ -14,6 +15,8 @@ var adapterFor = (function() {
     };
 }());
 
+var UA = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
+
 
 /**
  * Fetches the data from provided url
@@ -24,10 +27,22 @@ var adapterFor = (function() {
  */
 function remoteBase64(inputUrl) {
     return new Promise(function(resolve, reject) {
+        var mimeType = mime.lookup(inputUrl) || 'application/octet-stream';
+        var mimePrefix = 'data:' + mimeType + ';base64,';
         var adapter = adapterFor(inputUrl);
         var options = url.parse(inputUrl);
+        
+        options.method = 'GET';
+        options.headers = {
+            'User-Agent': UA
+        };
 
-        adapter.get(options, function(res) {
+        var request = adapter.request(options, function(res) {
+            if (res.statusCode !== 200) {
+                reject('HTTP status code: ' + res.statusCode);
+            }
+
+            res.setEncoding('base64');
             var data = '';
 
             res.on('data', function(chunk) {
@@ -35,10 +50,12 @@ function remoteBase64(inputUrl) {
             });
 
             res.on('end', function() {
-                resolve(new Buffer(data).toString('base64'));
+                resolve(mimePrefix + data);
+                request.end();
             });
         }).on('error', function(error) {
             reject(error);
+            request.end();
         });
     });
 };
