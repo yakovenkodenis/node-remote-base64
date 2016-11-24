@@ -40,6 +40,7 @@ function remoteBase64(inputUrl) {
         var request = adapter.request(options, function(res) {
             if (res.statusCode !== 200) {
                 reject('HTTP status code: ' + res.statusCode);
+                return false;
             }
 
             res.setEncoding('base64');
@@ -53,10 +54,14 @@ function remoteBase64(inputUrl) {
                 resolve(mimePrefix + data);
                 request.end();
             });
+
+            res.resume();
+            return true;
         }).on('error', function(error) {
             reject(error);
-            request.end();
         });
+
+        request.end();
     });
 };
 
